@@ -10,7 +10,7 @@ namespace EventPlanner
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("hei");
+            Console.WriteLine("hello world");
         }
     }
 }
