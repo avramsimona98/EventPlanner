@@ -10,7 +10,10 @@ namespace EventPlanner
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("hei");
+            EventBuildOrganizer eventBuildOrganizer = new EventBuildOrganizer(new EventBuilder());
+            eventBuildOrganizer.Construct(100,EPackageType.StandardPlus,ELocation.Belvedere,EEventDay.Weekend,EEventType.Party);
+            Event eveniment = eventBuildOrganizer.GetResult();
+            Console.WriteLine(eveniment);
         }
     }
 }
