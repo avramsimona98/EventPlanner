@@ -42,19 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Convertor.cs" />
     <Compile Include="EEventDay.cs" />
     <Compile Include="EEventType.cs" />
     <Compile Include="ELocation.cs" />
+    <Compile Include="English.cs" />
     <Compile Include="EPackageType.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="EventBuilder.cs" />
     <Compile Include="EventBuildOrganizer.cs" />
     <Compile Include="EventDecorator.cs" />
+    <Compile Include="IConvertor.cs" />
+    <Compile Include="IConvertorServices.cs" />
     <Compile Include="IEvent.cs" />
     <Compile Include="IEventBuilder.cs" />
     <Compile Include="PremiumPackage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Romanian.cs" />
     <Compile Include="StandardPackage.cs" />
     <Compile Include="StandardPlusPackage.cs" />
     <Compile Include="VIPPackage.cs" />
