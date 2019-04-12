@@ -49,9 +49,15 @@
     <Compile Include="Event.cs" />
     <Compile Include="EventBuilder.cs" />
     <Compile Include="EventBuildOrganizer.cs" />
+    <Compile Include="EventDecorator.cs" />
+    <Compile Include="IEvent.cs" />
     <Compile Include="IEventBuilder.cs" />
+    <Compile Include="PremiumPackage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StandardPackage.cs" />
+    <Compile Include="StandardPlusPackage.cs" />
+    <Compile Include="VIPPackage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

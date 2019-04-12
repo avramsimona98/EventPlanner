@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace EventPlanner
 {
-    class EventBuildOrganizer
+   public class EventBuildOrganizer
     {
-        private IEventBuilder eventBuilder;
+       public IEventBuilder eventBuilder;
         public EventBuildOrganizer(IEventBuilder builder)
         {
             eventBuilder = builder;
@@ -21,6 +21,9 @@ namespace EventPlanner
             eventBuilder.SetEventDay(eventDay);
             eventBuilder.SetEventType(eventType);
         }
+
+     
+
         public Event GetResult()
         {
             return eventBuilder.GetEvent();
