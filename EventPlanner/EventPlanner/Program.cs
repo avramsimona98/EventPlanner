@@ -2,6 +2,7 @@
 using EventPlanner.Builder;
 using EventPlanner.Decorater;
 using EventPlanner.Enum;
+using EventPlanner.Template_Method;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,7 @@ namespace EventPlanner
             EEventType EType;
             EEventDay DType;
             ELocation LType;
-            int Guests;
+            int Guests=100;
             StandardPackage standard;
             Console.WriteLine("Choose your event type:");
             Console.WriteLine("1.Wedding 2.Banquest 3.Party");
@@ -49,8 +50,47 @@ namespace EventPlanner
             //optiunea de pachet
             Console.WriteLine("Choose what type of event package you would like:");
             Console.WriteLine("1.Standard 2.StandardPlus 3.Premium 4.VIP");
-            string opt = Console.ReadLine();
-         
+            string ptype = Console.ReadLine();
+            //Export Data with template method
+            //Read data as strings ex: Wedding , Yaz etc. not just numbers ...
+            //Test Version=> Main will be finished  soon ^_^
+            ReportData data;
+            Console.WriteLine("Where do you want to export your offer?");
+            Console.WriteLine("1.TextFile 2.DocxFile");
+            string fileOpt = Console.ReadLine();
+            List<String> Read = new List<String>();
+            switch(fileOpt)
+            {
+                case "1":
+                    {
+                        
+                         data = new TextReportData();
+                        Read.Add(ptype);
+                        Read.Add(etype);
+                        Read.Add(Guests.ToString());
+                        Read.Add(ltype);
+                        Read.Add(dtype);
+                       
+                            
+                        Read.Add("600");
+                        data.ExportFormatedData();
+                        data.ExportData(Read);
+                        break;
+                        
+                    }
+                case "2":
+                    {
+                       data = new TextReportData();
+                        Read.Add(ptype);
+                        Read.Add(etype);
+                        Read.Add(Guests.ToString());
+                        Read.Add(ltype);
+                        Read.Add(dtype);
+                        Read.Add("600");
+                        data.ExportData(Read);
+                        break;
+                    }
+            }
             //BRIDGE --> tot cu enter
             Console.ReadLine();
             Console.WriteLine("Choose your language: ");

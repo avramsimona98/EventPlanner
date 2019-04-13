@@ -63,9 +63,16 @@
     <Compile Include="Decorater\StandardPackage.cs" />
     <Compile Include="Decorater\StandardPlusPackage.cs" />
     <Compile Include="Decorater\VIPPackage.cs" />
+    <Compile Include="Template Method\DocxReportData.cs" />
+    <Compile Include="Template Method\ReportData.cs" />
+    <Compile Include="Template Method\TextReportData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ResultsDocx.docx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ResultText.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
