@@ -1,10 +1,12 @@
-﻿using System;
+﻿using EventPlanner.Builder;
+using EventPlanner.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventPlanner
+namespace EventPlanner.Decorater
 {
     public class StandardPackage : IEvent
     {
@@ -13,16 +15,21 @@ namespace EventPlanner
         public EEventType EType { get; set; }
         public EEventDay DType { get; set; }
         public ELocation LType { get; set; }
-        public int guests { get; set; }
-        public static IEventBuilder builder { get; set; }
+        public int Guests { get; set; }
+        public Event eveniment = new Event();
+        public static IEventBuilder builder;
         // public EventBuildOrganizer organizer=new EventBuildOrganizer(builder);
-
-        public StandardPackage(EEventType type,EEventDay day)
+       EventBuildOrganizer eventBuildOrganizer = new EventBuildOrganizer(new EventBuilder());
+        //public EEventType e = eveniment.EventType;
+        public StandardPackage(EEventType eventType,EEventDay day, ELocation location, int guests)
         {
             PType = EPackageType.Standard;
-            EType = type;
+            EType = eventType;
             DType = day;
-            // organizer.Construct(guests, PType, LType, DType, EType);
+            LType = location;
+            //EType = builder.SetEventType();
+            Guests = guests;
+            //eventBuildOrganizer.Construct(eveniment.Guests, eveniment.PackageType,eveniment.Location, eveniment.EventDay, eveniment.EventType);
 
 
             SetPrice();
@@ -81,11 +88,14 @@ namespace EventPlanner
         public override string ToString()
         {
             return string.Format(
-                "Package:{0}\n" +
-                "Event Type:{1}\n" +
-                "Location:{2}\n" +
-                "Price:{3}\n",
-                PType, EType, LType, Price);
+               "Package:{0}\n" +
+               "Event Type:{1}\n" +
+               "Location:{2}\n" +
+               "Event Day :{3}\n" +
+               "Guests :{4}\n" +
+               "Price/guest:{5}\n",
+            PType, EType, LType, DType, Guests, Price);
+           
         }
 
     }

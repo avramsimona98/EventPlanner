@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventPlanner
+namespace EventPlanner.Enum
 {
-    public enum EEventDay
+    public enum ELocation
     {
-        Weekend,
-        WeekTime
+        Belvedere,
+            Yaz,
+            LuxDivina,
+            QEvents
+
     }
 }

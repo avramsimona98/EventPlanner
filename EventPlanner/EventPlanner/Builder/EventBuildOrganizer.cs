@@ -1,10 +1,11 @@
-﻿using System;
+﻿using EventPlanner.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventPlanner
+namespace EventPlanner.Builder
 {
    public class EventBuildOrganizer
     {
@@ -20,6 +21,7 @@ namespace EventPlanner
             eventBuilder.SetLocation(location);
             eventBuilder.SetEventDay(eventDay);
             eventBuilder.SetEventType(eventType);
+
         }
 
      

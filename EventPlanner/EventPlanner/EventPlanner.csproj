@@ -42,27 +42,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Convertor.cs" />
-    <Compile Include="EEventDay.cs" />
-    <Compile Include="EEventType.cs" />
-    <Compile Include="ELocation.cs" />
-    <Compile Include="English.cs" />
-    <Compile Include="EPackageType.cs" />
-    <Compile Include="Event.cs" />
-    <Compile Include="EventBuilder.cs" />
-    <Compile Include="EventBuildOrganizer.cs" />
-    <Compile Include="EventDecorator.cs" />
-    <Compile Include="IConvertor.cs" />
-    <Compile Include="IConvertorServices.cs" />
-    <Compile Include="IEvent.cs" />
-    <Compile Include="IEventBuilder.cs" />
-    <Compile Include="PremiumPackage.cs" />
+    <Compile Include="Bridge\Convertor.cs" />
+    <Compile Include="Enum\EEventDay.cs" />
+    <Compile Include="Enum\EEventType.cs" />
+    <Compile Include="Enum\ELocation.cs" />
+    <Compile Include="Bridge\English.cs" />
+    <Compile Include="Enum\EPackageType.cs" />
+    <Compile Include="Builder\Event.cs" />
+    <Compile Include="Builder\EventBuilder.cs" />
+    <Compile Include="Builder\EventBuildOrganizer.cs" />
+    <Compile Include="Decorater\EventDecorator.cs" />
+    <Compile Include="Bridge\IConvertor.cs" />
+    <Compile Include="Bridge\IConvertorServices.cs" />
+    <Compile Include="Decorater\IEvent.cs" />
+    <Compile Include="Builder\IEventBuilder.cs" />
+    <Compile Include="Decorater\PremiumPackage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Romanian.cs" />
-    <Compile Include="StandardPackage.cs" />
-    <Compile Include="StandardPlusPackage.cs" />
-    <Compile Include="VIPPackage.cs" />
+    <Compile Include="Bridge\Romanian.cs" />
+    <Compile Include="Decorater\StandardPackage.cs" />
+    <Compile Include="Decorater\StandardPlusPackage.cs" />
+    <Compile Include="Decorater\VIPPackage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

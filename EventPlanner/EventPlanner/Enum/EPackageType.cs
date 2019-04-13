@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventPlanner
+namespace EventPlanner.Enum
 {
-    public enum ELocation
+    public enum EPackageType
     {
-        Belvedere,
-            Yaz,
-            LuxDivina,
-            QEvents
+        Standard,
+        StandardPlus,
+        Premium,
+        VIP
 
     }
 }

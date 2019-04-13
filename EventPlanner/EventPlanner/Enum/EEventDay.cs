@@ -4,14 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventPlanner
+namespace EventPlanner.Enum
 {
-    public enum EPackageType
+    public enum EEventDay
     {
-        Standard,
-        StandardPlus,
-        Premium,
-        VIP
-
+        Weekend,
+        WeekTime
     }
 }

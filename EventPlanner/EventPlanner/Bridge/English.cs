@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventPlanner
+namespace EventPlanner.Bridge
 {
-    class Romanian : IConvertorServices
+    class English : IConvertorServices
     {
         public void ConvertToEuro(float money)
         {
@@ -18,7 +18,7 @@ namespace EventPlanner
         }
         public void LanguageTranslator()
         {
-            Console.WriteLine("Nunta");
+            Console.WriteLine("Wedding");
         }
     }
 }

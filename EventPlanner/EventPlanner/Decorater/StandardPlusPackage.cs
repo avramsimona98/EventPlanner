@@ -1,17 +1,18 @@
-﻿using System;
+﻿using EventPlanner.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventPlanner
+namespace EventPlanner.Decorater
 {
-    public class PremiumPackage :EventDecorator
+    public class StandardPlusPackage : EventDecorator
     {
-        
-        public PremiumPackage(IEvent decoratedEvent):base(decoratedEvent)
+
+        public StandardPlusPackage(IEvent decoratedEvent) : base(decoratedEvent)
         {
-            DecoratedEvent.PType = EPackageType.Premium;
+            DecoratedEvent.PType = EPackageType.StandardPlus;
             SetPrice();
         }
         public override void SetPrice()
@@ -22,22 +23,19 @@ namespace EventPlanner
                 {
                     case EEventType.Wedding:
                         {
-                            DecoratedEvent.Price += 150;
+                            DecoratedEvent.Price += 50;
                             break;
                         }
                     case EEventType.Banquet:
                         {
-                            DecoratedEvent.Price += 100;
+                            DecoratedEvent.Price += 40;
                             break;
                         }
                     case EEventType.Party:
                         {
-                            DecoratedEvent.Price += 70;
+                            DecoratedEvent.Price += 30;
                             break;
                         }
-
-
-
                 }
             }
             else
@@ -46,25 +44,26 @@ namespace EventPlanner
                 {
                     case EEventType.Wedding:
                         {
-                            DecoratedEvent.Price += 150;
+                            DecoratedEvent.Price += 50;
                             break;
                         }
                     case EEventType.Banquet:
                         {
-                            DecoratedEvent.Price += 100;
+                            DecoratedEvent.Price += 40;
                             break;
                         }
                     case EEventType.Party:
                         {
-                            DecoratedEvent.Price += 70;
+                            DecoratedEvent.Price += 30;
                             break;
                         }
-
-
-
                 }
+
+
             }
         }
     }
-    }
+
+
+}
 
