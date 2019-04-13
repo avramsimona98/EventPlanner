@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EventPlanner.Enum
+
 {
     public enum EEventType
     {   

@@ -14,9 +14,9 @@ namespace EventPlanner.Builder
         {
             eveniment = new Event();
         }
-        public void SetGuests(int guests)
+        public void SetStartPrice(int startPrice)
         {
-            eveniment.Guests = guests;
+            eveniment.StartPrice = startPrice;
         }
 
         public void SetPackageType(EPackageType packageType)
@@ -24,7 +24,7 @@ namespace EventPlanner.Builder
             eveniment.PackageType = packageType;
         }
 
-        public void SetLocation(ELocation location)
+        public void SetLocation(string location)
         {
             eveniment.Location = location;
         }

@@ -66,6 +66,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ResultsDocx.docx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ResultText.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

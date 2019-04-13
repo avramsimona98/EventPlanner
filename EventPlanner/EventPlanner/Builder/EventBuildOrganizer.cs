@@ -14,12 +14,12 @@ namespace EventPlanner.Builder
         {
             eventBuilder = builder;
         }
-        public void Construct(int guests, EPackageType packageType, ELocation location, EEventDay eventDay, EEventType eventType)
+        public void Construct(int startPrice, EPackageType packageType, string location,EEventType eventType)
         {
-            eventBuilder.SetGuests(guests);
+            eventBuilder.SetStartPrice(startPrice);
             eventBuilder.SetPackageType(packageType);
             eventBuilder.SetLocation(location);
-            eventBuilder.SetEventDay(eventDay);
+           // eventBuilder.SetEventDay(eventDay);
             eventBuilder.SetEventType(eventType);
 
         }
