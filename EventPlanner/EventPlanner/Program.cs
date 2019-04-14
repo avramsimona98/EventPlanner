@@ -32,7 +32,7 @@ namespace EventPlanner
             Event @event = client.GetAnOffer(organizer);
             Console.WriteLine(@event);
 
-            //memento test
+            //memento test 
             //se creaza un eveniment
             Event eveniment1 = new Event();
             eveniment1.Guests = 100;
