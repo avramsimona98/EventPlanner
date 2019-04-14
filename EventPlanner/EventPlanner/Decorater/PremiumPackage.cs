@@ -1,4 +1,4 @@
-﻿using EventPlanner.Enum;
+﻿using EventPlanner.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +17,7 @@ namespace EventPlanner.Decorater
         }
         public override void SetPrice()
         {
+            //DecoratedEvent.Price += 10922;
             if (DType == EEventDay.WeekTime)
             {
                 switch (EType)
@@ -43,7 +44,7 @@ namespace EventPlanner.Decorater
             }
             else
             {
-                switch (EType)
+               switch (EType)
                 {
                     case EEventType.Wedding:
                         {
@@ -62,7 +63,7 @@ namespace EventPlanner.Decorater
                         }
 
 
-
+    
     
                 }
             }

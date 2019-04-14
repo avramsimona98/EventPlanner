@@ -1,4 +1,4 @@
-﻿using EventPlanner.Enum;
+﻿using EventPlanner.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

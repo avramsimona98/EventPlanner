@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventPlanner.Enum
+namespace EventPlanner.Enums
 {
     public enum ELocation
     {

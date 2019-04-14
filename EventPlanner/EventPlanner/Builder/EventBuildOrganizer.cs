@@ -1,4 +1,4 @@
-﻿using EventPlanner.Enum;
+﻿using EventPlanner.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace EventPlanner.Builder
         {
             eventBuilder = builder;
         }
-        public void Construct(int startPrice, EPackageType packageType, string location,EEventType eventType)
+        public void Construct(int startPrice, EPackageType packageType, ELocation location,EEventType eventType)
         {
             eventBuilder.SetStartPrice(startPrice);
             eventBuilder.SetPackageType(packageType);

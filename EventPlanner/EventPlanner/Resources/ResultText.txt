@@ -1,0 +1,6 @@
+Standard
+Party
+100
+QEvents
+Weekend
+600

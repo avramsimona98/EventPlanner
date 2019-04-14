@@ -1,4 +1,4 @@
-﻿using EventPlanner.Enum;
+﻿using EventPlanner.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +24,7 @@ namespace EventPlanner.Builder
             eveniment.PackageType = packageType;
         }
 
-        public void SetLocation(string location)
+        public void SetLocation(ELocation location)
         {
             eveniment.Location = location;
         }

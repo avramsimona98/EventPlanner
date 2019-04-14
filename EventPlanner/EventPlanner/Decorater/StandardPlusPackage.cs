@@ -1,4 +1,4 @@
-﻿using EventPlanner.Enum;
+﻿using EventPlanner.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,49 +18,50 @@ namespace EventPlanner.Decorater
         public override void SetPrice()
         {
             if (DType == EEventDay.WeekTime)
-            {
-                switch (EType)
-                {
-                    case EEventType.Wedding:
-                        {
-                            DecoratedEvent.Price += 50;
-                            break;
-                        }
-                    case EEventType.Banquet:
-                        {
-                            DecoratedEvent.Price += 40;
-                            break;
-                        }
-                    case EEventType.Party:
-                        {
-                            DecoratedEvent.Price += 30;
-                            break;
-                        }
-                }
-            }
-            else
-            {
-                switch (EType)
-                {
-                    case EEventType.Wedding:
-                        {
-                            DecoratedEvent.Price += 50;
-                            break;
-                        }
-                    case EEventType.Banquet:
-                        {
-                            DecoratedEvent.Price += 40;
-                            break;
-                        }
-                    case EEventType.Party:
-                        {
-                            DecoratedEvent.Price += 30;
-                            break;
-                        }
-                }
+             {
+                 switch (EType)
+                 {
+                     case EEventType.Wedding:
+                         {
+                             DecoratedEvent.Price += 50;
+                             break;
+                         }
+                     case EEventType.Banquet:
+                         {
+                             DecoratedEvent.Price += 40;
+                             break;
+                         }
+                     case EEventType.Party:
+                         {
+                             DecoratedEvent.Price += 30;
+                             break;
+                         }
+                 }
+             }
+             else
+             {
+                 switch (EType)
+                 {
+                     case EEventType.Wedding:
+                         {
+                             DecoratedEvent.Price += 50;
+                             break;
+                         }
+                     case EEventType.Banquet:
+                         {
+                             DecoratedEvent.Price += 40;
+                             break;
+                         }
+                     case EEventType.Party:
+                         {
+                             DecoratedEvent.Price += 30;
+                             break;
+                         }
+                 }
 
 
-            }
+             }
+            
         }
     }
 

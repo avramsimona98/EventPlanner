@@ -12,12 +12,11 @@ namespace EventPlanner.Memento
     {
         public int Guests;
         public EPackageType PackageType { get; private set; }
-        //public ELocation Location { get; private set; }
-        public string Location;
+        public ELocation Location { get; private set; }
         public EEventDay EventDay { get; private set; }
         public EEventType EventType { get; private set; }
 
-        public EventMemento(int guests, EPackageType packageType,string location, EEventDay eventDay, EEventType eventType)
+        public EventMemento(int guests, EPackageType packageType, ELocation location, EEventDay eventDay, EEventType eventType)
         {
 
             this.Guests = guests;
