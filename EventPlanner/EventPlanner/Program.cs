@@ -17,14 +17,20 @@ namespace EventPlanner
     {
         static void Main(string[] args)
         {
-            EventBuildOrganizer eventBuildOrganizer = new EventBuildOrganizer(new EventBuilder());
+           /* EventBuildOrganizer eventBuildOrganizer = EventBuildOrganizer.Instance;
 
-            eventBuildOrganizer.Construct(100, EPackageType.StandardPlus, ELocation.Yaz, EEventDay.WeekTime, EEventType.Party);
-            Event eveniment = eventBuildOrganizer.GetResult();
-            Console.WriteLine(eveniment);
-            eventBuildOrganizer.Construct(100, EPackageType.Standard, ELocation.Belvedere, EEventDay.WeekTime, EEventType.Banquet);
-            Event eveniment2 = eventBuildOrganizer.GetResult();
-            Console.WriteLine(eveniment2);
+             eventBuildOrganizer.Construct();
+             Event eveniment = eventBuildOrganizer.GetResult();
+             Console.WriteLine(eveniment);
+             eventBuildOrganizer.Construct();
+             Event eveniment2 = eventBuildOrganizer.GetResult();
+             Console.WriteLine(eveniment2);
+             */
+            //Singleton
+            EventBuildOrganizer organizer = EventBuildOrganizer.Instance;
+            Singleton.Client client = new Singleton.Client();
+            Event @event = client.GetAnOffer(organizer);
+            Console.WriteLine(@event);
 
             //memento test
             //se creaza un eveniment
@@ -82,7 +88,7 @@ namespace EventPlanner
             //Test Version=> Main will be finished  soon ^_^
             ReportData data;
             Console.WriteLine("Where do you want to export your offer?");
-            Console.WriteLine("1.TextFile 2.DocxFile");
+            Console.WriteLine("1.TextFile 2.DocxFile 3.Just diplay it here");
             string fileOpt = Console.ReadLine();
             List<String> Read = new List<String>();
             switch(fileOpt)
@@ -114,6 +120,11 @@ namespace EventPlanner
                         Read.Add(dtype);
                         Read.Add("600");
                         data.ExportData(Read);
+                        break;
+                    }
+                case "3":
+                    {
+                        Console.WriteLine(ptype + " " + etype + " " + Guests + " " + ltype + " " + dtype);
                         break;
                     }
             }
