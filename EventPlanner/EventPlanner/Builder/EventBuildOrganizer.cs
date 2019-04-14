@@ -12,32 +12,32 @@ namespace EventPlanner.Builder
     {
         public IEventBuilder eventBuilder { get; set; }
 
-        //private static EventBuildOrganizer _instance;
+        private static EventBuildOrganizer _instance;
 
         private static readonly object padlock = new object();
 
         private EventBuildOrganizer()
         {
-
+            eventBuilder = new EventBuilder();
         }
         public EventBuildOrganizer(IEventBuilder builder)
         {
             eventBuilder = builder;
         }
-        //public static EventBuildOrganizer Instance
-        //{
-        //    get
-        //    {
-        //        lock (padlock)
-        //        {
-        //            if (_instance == null)
-        //            {
-        //                _instance = new EventBuildOrganizer();
-        //            }
-        //            return _instance;
-        //        }
-        //    }
-        //}
+        public static EventBuildOrganizer Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if (_instance == null)
+                   {
+                        _instance = new EventBuildOrganizer();
+                   }
+                    return _instance;
+                }
+            }
+        }
         public void Construct(int startPrice,int guests, EPackageType packageType, ELocation location, EEventDay eventDay, EEventType eventType)
         {
             eventBuilder.SetStartPrice(startPrice);

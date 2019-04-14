@@ -66,7 +66,6 @@
     <Compile Include="Decorater\StandardPackage.cs" />
     <Compile Include="Decorater\StandardPlusPackage.cs" />
     <Compile Include="Decorater\VIPPackage.cs" />
-    <Compile Include="Singleton\Client.cs" />
     <Compile Include="Template Method\DocxReportData.cs" />
     <Compile Include="Template Method\ReportData.cs" />
     <Compile Include="Template Method\TextReportData.cs" />

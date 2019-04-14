@@ -17,6 +17,8 @@ namespace EventPlanner
     {
         static void Main(string[] args)
         {
+            
+
             List<Event> offers = CreateOffers();
             Program pro = new Program();
             Console.WriteLine("Please choose your event type in order to display our offers:");
@@ -62,10 +64,12 @@ namespace EventPlanner
         {
             List<Event> offers = new List<Event>();
 
-            EventBuildOrganizer eventBuildOrganizer = new EventBuildOrganizer(new EventBuilder());
+            EventBuildOrganizer eventBuildOrganizer = EventBuildOrganizer.Instance;
+
             Event eveniment, clone,clone1;
 
-            eventBuildOrganizer.Construct(300, 100, EPackageType.Standard, ELocation.Belvedere, EEventDay.WeekTime, EEventType.Wedding);
+            eventBuildOrganizer.Construct(300, 100, EPackageType.Standard, ELocation.Belvedere, EEventDay.WeekTime, EEventType.Wedding);//3
+            
             eveniment = eventBuildOrganizer.GetResult();
             offers.Add(eveniment);
             clone = eveniment.Clone();
@@ -121,6 +125,7 @@ namespace EventPlanner
             LType = (ELocation)(Enum.Parse(typeof(ELocation), ltype));
             PType = (EPackageType)(Enum.Parse(typeof(EPackageType), ptype));
             StandardPackage standard;
+            float money = 0;
 
             switch (PType)
             {
@@ -141,6 +146,7 @@ namespace EventPlanner
 
                             }
                             Console.WriteLine(standard);
+                            money = standard.Price;
                         }
 
                         break;
@@ -163,6 +169,7 @@ namespace EventPlanner
 
                             }
                             Console.WriteLine(new StandardPlusPackage(standard));
+                            money = standard.Price;
                         }
 
                         break;
@@ -184,6 +191,7 @@ namespace EventPlanner
 
                             }
                             Console.WriteLine(new PremiumPackage(standard));
+                            money = standard.Price;
                         }
 
                         break;
@@ -205,20 +213,19 @@ namespace EventPlanner
 
                             }
                             Console.WriteLine(new VIPPackage(standard));
+                            money = standard.Price;
                         }
 
                         break;
 
                     }
-
             
-        }
+            }
             //BRIDGE
             //
-            Console.ReadLine();
+            //Console.ReadLine();
             //Price after further talking with the client
-            Console.WriteLine("Final price:");
-                float money = float.Parse(Console.ReadLine());
+            Console.WriteLine("Final price:" + money*100);                
             Console.WriteLine("In what monetary unit would you like your final price to be in : ");
             Console.WriteLine("1.Dollar 2.Euro 3.Lei");
             string number = Console.ReadLine();
