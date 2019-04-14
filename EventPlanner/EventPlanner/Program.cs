@@ -1,5 +1,6 @@
 ﻿using EventPlanner.Bridge;
 using EventPlanner.Builder;
+using EventPlanner.Memento;
 using EventPlanner.Decorater;
 using EventPlanner.Enum;
 using EventPlanner.Template_Method;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace EventPlanner
@@ -23,8 +25,37 @@ namespace EventPlanner
             eventBuildOrganizer.Construct(100, EPackageType.Standard, ELocation.Belvedere, EEventDay.WeekTime, EEventType.Banquet);
             Event eveniment2 = eventBuildOrganizer.GetResult();
             Console.WriteLine(eveniment2);
+
+            //memento test
+            //se creaza un eveniment
+            Event eveniment1 = new Event();
+            eveniment1.Guests = 100;
+            eveniment1.Location = ELocation.Belvedere;
+            eveniment1.PackageType = EPackageType.Premium;
+            eveniment1.EventType = EEventType.Banquet;
+            eveniment1.EventDay = EEventDay.Weekend;
+            
+            Console.WriteLine(eveniment1);//se afiseaza evenimentul initial
+
+            Thread.Sleep(2000);
+            //se salveaza evenimentul in starea respectiva
+            Caretaker caretaker = new Caretaker();
+            caretaker.eveniment = eveniment1.Create();
+            //se modifica evenimentul initial
+            eveniment1.Guests = 150;
+            eveniment1.Location = ELocation.LuxDivina;
+            eveniment1.PackageType = EPackageType.Premium;
+            eveniment1.EventType = EEventType.Banquet;
+            eveniment1.EventDay = EEventDay.WeekTime;
+            //se afiseaza evenimentul modificat
+            Console.WriteLine(eveniment1);
+            //se restaureaza evenimentul la starea lui anterioara
+            eveniment1.Restore(caretaker.eveniment);
+            Console.WriteLine(eveniment1);
+            Console.WriteLine("=======================");
+
+
             /*  Console.ReadLine();
-               //dai cu Enter in consola ca sa iti apara urmatorul
                StandardPackage standard = new StandardPackage();
 
              // VIPPackage vip = new VIPPackage(standard);
@@ -32,16 +63,11 @@ namespace EventPlanner
                */
 
             //Alege optiunile de event,zi,etc
-            EEventType EType;
-            EEventDay DType;
-            ELocation LType;
             int Guests=100;
-            StandardPackage standard;
             Console.WriteLine("Choose your event type:");
-            Console.WriteLine("1.Wedding 2.Banquest 3.Party");
+            Console.WriteLine("1.Wedding 2.Banquet 3.Party");
             string etype = Console.ReadLine();
-            // Console.ReadLine();
-            Console.WriteLine("Choose your prefered location:");
+            Console.WriteLine("Choose your preferred location:");
             Console.WriteLine("1.Belvedere 2.Yaz 3.LuxDivina 4.QEvents");
             string ltype = Console.ReadLine();
             Console.WriteLine("Choose what time of the week you would like (Keep in mind that in weekend there is an extra fee");
