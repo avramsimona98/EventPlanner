@@ -16,15 +16,21 @@ namespace EventPlanner
     class Program
     {
         static void Main(string[] args)
-        {  
-            EventBuildOrganizer eventBuildOrganizer = new EventBuildOrganizer(new EventBuilder());
+        {
+            /* EventBuildOrganizer eventBuildOrganizer = EventBuildOrganizer.Instance;
 
-            eventBuildOrganizer.Construct(100, EPackageType.StandardPlus, ELocation.Yaz, EEventType.Party);
-            Event eveniment = eventBuildOrganizer.GetResult();
-            Console.WriteLine(eveniment);
-            eventBuildOrganizer.Construct(100, EPackageType.Standard, ELocation.Belvedere,  EEventType.Banquet);
-            Event eveniment2 = eventBuildOrganizer.GetResult();
-            Console.WriteLine(eveniment2);
+              eventBuildOrganizer.Construct();
+              Event eveniment = eventBuildOrganizer.GetResult();
+              Console.WriteLine(eveniment);
+              eventBuildOrganizer.Construct();
+              Event eveniment2 = eventBuildOrganizer.GetResult();
+              Console.WriteLine(eveniment2);
+              */
+            //Singleton
+            EventBuildOrganizer organizer = EventBuildOrganizer.Instance;
+            Singleton.Client client = new Singleton.Client();
+            Event @event = client.GetAnOffer(organizer);
+            Console.WriteLine(@event);
 
             //memento test
             //se creaza un eveniment
@@ -34,7 +40,7 @@ namespace EventPlanner
             eveniment1.PackageType = EPackageType.Premium;
             eveniment1.EventType = EEventType.Banquet;
             eveniment1.EventDay = EEventDay.Weekend;
-            
+
             Console.WriteLine(eveniment1);//se afiseaza evenimentul initial
 
             Thread.Sleep(2000);
@@ -55,19 +61,15 @@ namespace EventPlanner
             Console.WriteLine("=======================");
 
 
-             Console.ReadLine();
-            /*  StandardPackage standard = new StandardPackage(EEventType.Wedding,EEventDay.Weekend,ELocation.Yaz,100);
+            /*  Console.ReadLine();
+               StandardPackage standard = new StandardPackage();
 
-            PremiumPackage vip = new PremiumPackage(standard);
-              Console.WriteLine(standard);
-              */
+             // VIPPackage vip = new VIPPackage(standard);
+               Console.WriteLine(standard);
+               */
 
             //Alege optiunile de event,zi,etc
-            EEventType EType ;
-            EEventDay DType ;
-            ELocation LType ;
-            EPackageType PType;
-            int Guests=100;
+            int Guests = 100;
             Console.WriteLine("Choose your event type:");
             Console.WriteLine("1.Wedding 2.Banquet 3.Party");
             string etype = Console.ReadLine();
@@ -81,48 +83,36 @@ namespace EventPlanner
             Console.WriteLine("Choose what type of event package you would like:");
             Console.WriteLine("1.Standard 2.StandardPlus 3.Premium 4.VIP");
             string ptype = Console.ReadLine();
-            EType = (EEventType)(Enum.Parse(typeof(EEventType), etype));
-            DType = (EEventDay)(Enum.Parse(typeof(EEventDay), dtype));
-            LType = (ELocation)(Enum.Parse(typeof(ELocation), ltype));
-            PType = (EPackageType)(Enum.Parse(typeof(EPackageType), ptype));
-            //object type standard
-            StandardPackage stand = new StandardPackage(EType,DType,LType,100);
-            //vip
-            VIPPackage vip = new VIPPackage(stand);
-            //needs to be differentiat for every type of package 
-            //just an example
-            Console.WriteLine(stand);
             //Export Data with template method
             //Read data as strings ex: Wedding , Yaz etc. not just numbers ...
             //Test Version=> Main will be finished  soon ^_^
             ReportData data;
             Console.WriteLine("Where do you want to export your offer?");
-            //Choose 1 or 2 
-            Console.WriteLine("1.TextFile 2.DocxFile");
+            Console.WriteLine("1.TextFile 2.DocxFile 3.Just diplay it here");
             string fileOpt = Console.ReadLine();
             List<String> Read = new List<String>();
-            switch(fileOpt)
+            switch (fileOpt)
             {
                 case "1":
                     {
-                        
-                         data = new TextReportData();
+
+                        data = new TextReportData();
                         Read.Add(ptype);
                         Read.Add(etype);
                         Read.Add(Guests.ToString());
                         Read.Add(ltype);
                         Read.Add(dtype);
-                       
-                            
+
+
                         Read.Add("600");
                         data.ExportFormatedData();
                         data.ExportData(Read);
                         break;
-                        
+
                     }
                 case "2":
                     {
-                       data = new TextReportData();
+                        data = new TextReportData();
                         Read.Add(ptype);
                         Read.Add(etype);
                         Read.Add(Guests.ToString());
@@ -132,80 +122,36 @@ namespace EventPlanner
                         data.ExportData(Read);
                         break;
                     }
+                case "3":
+                    {
+                        Console.WriteLine(ptype + " " + etype + " " + Guests + " " + ltype + " " + dtype);
+                        break;
+                    }
             }
             //BRIDGE --> tot cu enter
+            //schimba pretul in euro si dolari (se considera lei ca fiind cursul default)
             Console.ReadLine();
-            Console.WriteLine("Choose your language: ");
-            Console.WriteLine("1.RO 2.ENG");
-            string lang = Console.ReadLine();
-            switch (lang)
+            Console.WriteLine("Introdu o suma: ");
+            float money = float.Parse(Console.ReadLine());
+            Console.WriteLine("1.Dollar 2.Euro 3.Lei");
+            string number = Console.ReadLine();
+            switch (number)
             {
                 case "1":
                     {
-                        Romanian ro = new Romanian();
-                        ro.LanguageTranslator();
-                        Console.WriteLine("introdu bani:");
-                        float money = float.Parse(Console.ReadLine());
-                        Console.WriteLine("1.euro 2.dolari 3.lei");
-                        string val = Console.ReadLine();
-                        switch (val)
-                        {
-                            case "1":
-                                {
-                                    ro.ConvertToEuro(money);
-                                    break;
-                                }
-                            case "2":
-                                {
-                                    ro.ConvertToDollar(money);
-                                    break;
-                                }
-                            case "3":
-                                {
-                                    Console.WriteLine(money);
-                                    break;
-                                }
-                            default:
-                                {
-                                    Console.WriteLine("error");
-                                    break;
-                                }
-
-                        }
+                        Dollar dollar = new Dollar();
+                        dollar.MoneyConvert(money);
                         break;
                     }
                 case "2":
                     {
-                        English eng = new English();
-                        eng.LanguageTranslator();
-                        Console.WriteLine("insert money:");
-                        float money = float.Parse(Console.ReadLine());
-                        Console.WriteLine("1.euro 2.dollars 3.lei");
-                        string val = Console.ReadLine();
-                        switch (val)
-                        {
-                            case "1":
-                                {
-                                    eng.ConvertToEuro(money);
-                                    break;
-                                }
-                            case "2":
-                                {
-                                    eng.ConvertToDollar(money);
-                                    break;
-                                }
-                            case "3":
-                                {
-                                    Console.WriteLine(money);
-                                    break;
-                                }
-                            default:
-                                {
-                                    Console.WriteLine("error");
-                                    break;
-                                }
-
-                        }
+                        Dollar dollar = new Dollar();
+                        dollar.MoneyConvert(money);
+                        break;
+                    }
+                case "3":
+                    {
+                        Console.WriteLine(money + " Lei");
                         break;
                     }
                 default:
@@ -214,7 +160,6 @@ namespace EventPlanner
                         break;
                     }
             }
-            
         }
     }
 }

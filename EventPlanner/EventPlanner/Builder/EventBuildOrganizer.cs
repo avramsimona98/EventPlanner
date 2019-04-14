@@ -7,24 +7,51 @@ using System.Threading.Tasks;
 
 namespace EventPlanner.Builder
 {
-   public class EventBuildOrganizer
+    //Singleton
+    public class EventBuildOrganizer
     {
-       public IEventBuilder eventBuilder;
-        public EventBuildOrganizer(IEventBuilder builder)
+        public IEventBuilder eventBuilder { get; set; }
+
+        private static EventBuildOrganizer _instance;
+
+        private static readonly object padlock = new object();
+
+        private EventBuildOrganizer()
+        {
+
+        }
+
+        public static EventBuildOrganizer Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new EventBuildOrganizer();
+                    }
+                    return _instance;
+                }
+            }
+        }
+
+        /* EventBuildOrganizer(IEventBuilder builder)
         {
             eventBuilder = builder;
-        }
-        public void Construct(int startPrice, EPackageType packageType, ELocation location,EEventType eventType)
+        }*/
+
+        public void Construct()
         {
-            eventBuilder.SetStartPrice(startPrice);
-            eventBuilder.SetPackageType(packageType);
-            eventBuilder.SetLocation(location);
-           // eventBuilder.SetEventDay(eventDay);
-            eventBuilder.SetEventType(eventType);
+            eventBuilder.SetGuests();
+            eventBuilder.SetPackageType();
+            eventBuilder.SetLocation();
+            eventBuilder.SetEventDay();
+            eventBuilder.SetEventType();
 
         }
 
-     
+
 
         public Event GetResult()
         {

@@ -43,10 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bridge\Convertor.cs" />
+    <Compile Include="Bridge\Dollar.cs" />
+    <Compile Include="Bridge\Euro.cs" />
     <Compile Include="Enums\EEventDay.cs" />
     <Compile Include="Enums\EEventType.cs" />
     <Compile Include="Enums\ELocation.cs" />
-    <Compile Include="Bridge\English.cs" />
     <Compile Include="Enums\EPackageType.cs" />
     <Compile Include="Builder\Event.cs" />
     <Compile Include="Builder\EventBuilder.cs" />
@@ -61,10 +62,10 @@
     <Compile Include="Memento\EventMemento.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Bridge\Romanian.cs" />
     <Compile Include="Decorater\StandardPackage.cs" />
     <Compile Include="Decorater\StandardPlusPackage.cs" />
     <Compile Include="Decorater\VIPPackage.cs" />
+    <Compile Include="Singleton\Client.cs" />
     <Compile Include="Template Method\DocxReportData.cs" />
     <Compile Include="Template Method\ReportData.cs" />
     <Compile Include="Template Method\TextReportData.cs" />

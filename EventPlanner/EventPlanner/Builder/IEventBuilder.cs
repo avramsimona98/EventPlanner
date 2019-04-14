@@ -9,11 +9,11 @@ namespace EventPlanner.Builder
 {
     public interface IEventBuilder
     {
-        void SetStartPrice(int startPrice);
-        void SetPackageType(EPackageType packageType);
-        void SetLocation(ELocation location);
-        void SetEventDay(EEventDay eventDay);
-        void SetEventType(EEventType eventType);
+        void SetGuests();
+        void SetPackageType();
+        void SetLocation();
+        void SetEventDay();
+        void SetEventType();
         Event GetEvent();
     }
 }

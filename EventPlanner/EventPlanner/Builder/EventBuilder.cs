@@ -10,31 +10,38 @@ namespace EventPlanner.Builder
     public class EventBuilder : IEventBuilder
     {
         private Event eveniment;
+        public int guests;
+        public EPackageType packageType;
+        public ELocation location;
+        public EEventDay eventDay;
+        public EEventType eventType;
+
         public EventBuilder()
         {
             eveniment = new Event();
         }
-        public void SetStartPrice(int startPrice)
+        public void SetGuests()
         {
-            eveniment.StartPrice = startPrice;
+            eveniment.Guests = guests;
         }
 
-        public void SetPackageType(EPackageType packageType)
+        public void SetPackageType()
         {
+
             eveniment.PackageType = packageType;
         }
 
-        public void SetLocation(ELocation location)
+        public void SetLocation()
         {
             eveniment.Location = location;
         }
 
-        public void SetEventDay(EEventDay eventDay)
+        public void SetEventDay()
         {
             eveniment.EventDay = eventDay;
         }
 
-        public void SetEventType(EEventType eventType)
+        public void SetEventType()
         {
             eveniment.EventType = eventType;
         }
