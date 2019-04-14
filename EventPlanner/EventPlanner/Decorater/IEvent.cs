@@ -14,6 +14,7 @@ namespace EventPlanner.Decorater
         EEventDay DType { get; set; }
         ELocation LType { get; set; }
         int Price { get; set; }
+        int Guests { get; set; }
         void SetPrice();
         string ToString();
 

@@ -1,6 +1,6 @@
-Standard
-Party
+Premium
+Banquet
 100
-QEvents
+Yaz
 Weekend
-600
+310

@@ -16,7 +16,7 @@ namespace EventPlanner.Decorater
         public int Price { get=>DecoratedEvent.Price; set=>DecoratedEvent.Price=value; }
         public IEvent DecoratedEvent { get; set; }
        // public Event eveniment=new Event();
-        public int Guests { get; set; }
+        public int Guests { get=>DecoratedEvent.Guests; set=>DecoratedEvent.Guests=value; }
         public EventDecorator(IEvent decoratedEvent)
         {
             DecoratedEvent = decoratedEvent;
