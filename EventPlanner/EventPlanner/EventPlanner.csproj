@@ -45,6 +45,7 @@
     <Compile Include="Bridge\Convertor.cs" />
     <Compile Include="Bridge\Dollar.cs" />
     <Compile Include="Bridge\Euro.cs" />
+    <Compile Include="Builder\IEventPrototype.cs" />
     <Compile Include="Enums\EEventDay.cs" />
     <Compile Include="Enums\EEventType.cs" />
     <Compile Include="Enums\ELocation.cs" />

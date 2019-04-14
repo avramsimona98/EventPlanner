@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace EventPlanner.Builder
 {
-    //Singleton
+    
     public class EventBuildOrganizer
     {
         public IEventBuilder eventBuilder { get; set; }
 
-        private static EventBuildOrganizer _instance;
+        //private static EventBuildOrganizer _instance;
 
         private static readonly object padlock = new object();
 
@@ -20,38 +20,33 @@ namespace EventPlanner.Builder
         {
 
         }
-
-        public static EventBuildOrganizer Instance
-        {
-            get
-            {
-                lock (padlock)
-                {
-                    if (_instance == null)
-                    {
-                        _instance = new EventBuildOrganizer();
-                    }
-                    return _instance;
-                }
-            }
-        }
-
-        /* EventBuildOrganizer(IEventBuilder builder)
+        public EventBuildOrganizer(IEventBuilder builder)
         {
             eventBuilder = builder;
-        }*/
-
-        public void Construct()
-        {
-            eventBuilder.SetGuests();
-            eventBuilder.SetPackageType();
-            eventBuilder.SetLocation();
-            eventBuilder.SetEventDay();
-            eventBuilder.SetEventType();
-
         }
-
-
+        //public static EventBuildOrganizer Instance
+        //{
+        //    get
+        //    {
+        //        lock (padlock)
+        //        {
+        //            if (_instance == null)
+        //            {
+        //                _instance = new EventBuildOrganizer();
+        //            }
+        //            return _instance;
+        //        }
+        //    }
+        //}
+        public void Construct(int startPrice,int guests, EPackageType packageType, ELocation location, EEventDay eventDay, EEventType eventType)
+        {
+            eventBuilder.SetStartPrice(startPrice);
+            eventBuilder.SetGuests(guests);
+            eventBuilder.SetPackageType(packageType);
+            eventBuilder.SetLocation(location);
+            eventBuilder.SetEventDay(eventDay);
+            eventBuilder.SetEventType(eventType);
+        }
 
         public Event GetResult()
         {

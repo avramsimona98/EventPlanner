@@ -12,7 +12,7 @@ namespace EventPlanner.Singleton
         public Builder.Event GetAnOffer(Builder.EventBuildOrganizer organizer)
         {
             organizer.eventBuilder = new Builder.EventBuilder();
-            organizer.Construct();
+            //organizer.Construct();
             return organizer.GetResult();
         }
     }
