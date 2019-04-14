@@ -19,7 +19,7 @@ namespace EventPlanner.Decorater
         public Event eveniment = new Event();
         public static IEventBuilder builder;
         // public EventBuildOrganizer organizer=new EventBuildOrganizer(builder);
-       EventBuildOrganizer eventBuildOrganizer = new EventBuildOrganizer(new EventBuilder());
+       //EventBuildOrganizer eventBuildOrganizer = new EventBuildOrganizer();
         //public EEventType e = eveniment.EventType;
         public StandardPackage(EEventType eventType,EEventDay day, ELocation location, int guests)
         {

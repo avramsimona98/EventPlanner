@@ -14,17 +14,9 @@ namespace EventPlanner.Bridge
         {
             service = Service;
         }
-        public void ConvertToEuro(float money)
+        public void MoneyConvert(float money)
         {
-            service.ConvertToEuro(money);
-        }
-        public void ConvertToDollar(float money)
-        {
-            service.ConvertToDollar(money);
-        }
-        public void LanguageTranslator()
-        {
-            service.LanguageTranslator();
+            service.MoneyConvert(money);
         }
     }
 }
