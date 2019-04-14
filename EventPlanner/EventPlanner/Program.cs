@@ -129,78 +129,29 @@ namespace EventPlanner
                     }
             }
             //BRIDGE --> tot cu enter
+            //schimba pretul in euro si dolari (se considera lei ca fiind cursul default)
             Console.ReadLine();
-            Console.WriteLine("Choose your language: ");
-            Console.WriteLine("1.RO 2.ENG");
-            string lang = Console.ReadLine();
-            switch (lang)
+            Console.WriteLine("Introdu o suma: ");
+            float money = float.Parse(Console.ReadLine());
+            Console.WriteLine("1.Dollar 2.Euro 3.Lei");
+            string number = Console.ReadLine();
+            switch (number)
             {
                 case "1":
                     {
-                        Romanian ro = new Romanian();
-                        ro.LanguageTranslator();
-                        Console.WriteLine("introdu bani:");
-                        float money = float.Parse(Console.ReadLine());
-                        Console.WriteLine("1.euro 2.dolari 3.lei");
-                        string val = Console.ReadLine();
-                        switch (val)
-                        {
-                            case "1":
-                                {
-                                    ro.ConvertToEuro(money);
-                                    break;
-                                }
-                            case "2":
-                                {
-                                    ro.ConvertToDollar(money);
-                                    break;
-                                }
-                            case "3":
-                                {
-                                    Console.WriteLine(money);
-                                    break;
-                                }
-                            default:
-                                {
-                                    Console.WriteLine("error");
-                                    break;
-                                }
-
-                        }
+                        Dollar dollar = new Dollar();
+                        dollar.MoneyConvert(money);
                         break;
                     }
                 case "2":
                     {
-                        English eng = new English();
-                        eng.LanguageTranslator();
-                        Console.WriteLine("insert money:");
-                        float money = float.Parse(Console.ReadLine());
-                        Console.WriteLine("1.euro 2.dollars 3.lei");
-                        string val = Console.ReadLine();
-                        switch (val)
-                        {
-                            case "1":
-                                {
-                                    eng.ConvertToEuro(money);
-                                    break;
-                                }
-                            case "2":
-                                {
-                                    eng.ConvertToDollar(money);
-                                    break;
-                                }
-                            case "3":
-                                {
-                                    Console.WriteLine(money);
-                                    break;
-                                }
-                            default:
-                                {
-                                    Console.WriteLine("error");
-                                    break;
-                                }
-
-                        }
+                        Dollar dollar = new Dollar();
+                        dollar.MoneyConvert(money);
+                        break;
+                    }
+                case "3":
+                    {
+                        Console.WriteLine(money + " Lei");
                         break;
                     }
                 default:

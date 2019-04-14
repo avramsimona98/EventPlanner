@@ -8,8 +8,7 @@ namespace EventPlanner.Bridge
 {
     public interface IConvertor
     {
-        void ConvertToEuro(float money);
-        void ConvertToDollar(float money);
-        void LanguageTranslator();
+        void MoneyConvert(float money);
+        
     }
 }
