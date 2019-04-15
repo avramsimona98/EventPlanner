@@ -17,7 +17,6 @@ namespace EventPlanner.Builder
         public EEventDay EventDay;
         public EEventType EventType;
         public bool IsClone { get; set; }
-        private Event eveniment;
 
 
         public Event Clone()

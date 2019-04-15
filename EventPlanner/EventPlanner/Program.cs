@@ -19,7 +19,7 @@ namespace EventPlanner
         {
             
             List<Event> offers = CreateOffers();
-            Program pro = new Program();
+            Event proposedEvent = new Event();
             Console.WriteLine("Please choose your event type in order to display our offers:");
             Console.WriteLine("1.Wedding 2.Banquet 3.Party");
             string opt = Console.ReadLine();
@@ -27,20 +27,24 @@ namespace EventPlanner
             {
                 case "1":
                     {
-                        ShowOffers(offers, EEventType.Wedding);
+                        proposedEvent = ShowOffer(offers, EEventType.Wedding);
                         break;
                     }
                 case "2":
                     {
-                        ShowOffers(offers, EEventType.Banquet);
+                        proposedEvent = ShowOffer(offers, EEventType.Banquet);
                         break;
                     }
                 case "3":
                     {
-                        ShowOffers(offers, EEventType.Party);
+                        proposedEvent = ShowOffer(offers, EEventType.Party);
                         break;
                     }
             }
+            //se salveaza evenimentul in starea respectiva
+            Caretaker caretaker = new Caretaker();
+            caretaker.eveniment = proposedEvent.Create();
+
             Console.WriteLine("Would you like to create your own design for the event or you like the current one? (Yes/No)");
             string offer = Console.ReadLine();
             switch (offer)
@@ -48,7 +52,14 @@ namespace EventPlanner
                 case "Yes":
                     {
                         Console.WriteLine("Your custom offer:");
-                        pro.DecoratedVersion();
+                        proposedEvent = DecoratedVersion();
+                        Console.WriteLine("Do you agree with this offer or you like the previous one? (Yes/No)");
+                        string choice = Console.ReadLine();
+                        if (choice == "No")
+                        {
+                            proposedEvent.Restore(caretaker.eveniment);
+                            Console.WriteLine(proposedEvent);
+                        }
                         break;
                     }
                 case "No":
@@ -58,6 +69,7 @@ namespace EventPlanner
 
                     }
             }
+            ReportData(proposedEvent);
         }
         public static List<Event> CreateOffers()
         {
@@ -82,20 +94,22 @@ namespace EventPlanner
 
             return offers;
         }
-        public static void ShowOffers(List<Event> offers, EEventType eventType)
+        public static Event ShowOffer(List<Event> offers, EEventType eventType)
         {
+            Event offer=new Event();
             Console.WriteLine("Our offers for events are the following:");
             foreach(var eveniment in offers)
             {
                 if(eveniment.EventType==eventType)
                 {
                     Console.WriteLine(eveniment);
+                    offer = eveniment;
                 }
             }
+            return offer;
         }
-        public void DecoratedVersion()
+        public static Event DecoratedVersion()
         {
-            int Guests = 100;
             EEventType EType;
             EEventDay DType;
             ELocation LType;
@@ -217,20 +231,68 @@ namespace EventPlanner
                         break;
 
                     }
-            
             }
+            ShowFinalPrice(money);
+            EventBuildOrganizer eventBuildOrganizer = EventBuildOrganizer.Instance;
+            Event eveniment;
+            eventBuildOrganizer.Construct((int)money, 100, PType, LType, DType, EType);
+            eveniment = eventBuildOrganizer.GetResult();
+            return eveniment;
+        }
+
+        public static void ReportData(Event proposedEvent)
+        {
+            ReportData data;
+            Console.WriteLine("Where do you want to export your final results?");
+            Console.WriteLine("1.TextFile 2.DocxFile ");
+            string fileOpt = Console.ReadLine();
+
+            List<String> Read = new List<String>();
+            switch (fileOpt)
+            {
+                case "1":
+                    {
+
+                        data = new TextReportData();
+                        Read.Add(proposedEvent.PackageType.ToString());
+                        Read.Add(proposedEvent.EventType.ToString());
+                        Read.Add(proposedEvent.Guests.ToString());
+                        Read.Add(proposedEvent.Location.ToString());
+                        Read.Add(proposedEvent.EventDay.ToString());
+
+
+                        //Read.Add(money.ToString());
+                        data.ExportFormatedData();
+                        data.ExportData(Read);
+                        break;
+
+                    }
+                case "2":
+                    {
+                        data = new DocxReportData();
+                        Read.Add(proposedEvent.PackageType.ToString());
+                        Read.Add(proposedEvent.EventType.ToString());
+                        Read.Add(proposedEvent.Guests.ToString());
+                        Read.Add(proposedEvent.Location.ToString());
+                        Read.Add(proposedEvent.EventDay.ToString());
+                        //Read.Add(money.ToString());
+                        data.ExportData(Read);
+                        break;
+                    }
+
+            }
+        }
+
+        public static void ShowFinalPrice(float money)
+        {
             //BRIDGE
             //
-            //Console.ReadLine();
             //Price after further talking with the client
-            Console.WriteLine("Final price:" + money * 100);                
+            Console.WriteLine("Final price:" + money * 100);
             Console.WriteLine("In what monetary unit would you like your final price to be in : ");
             Console.WriteLine("1.Dollar 2.Euro 3.Lei");
             string number = Console.ReadLine();
 
-            
-          
-            
             switch (number)
             {
                 case "1":
@@ -256,48 +318,6 @@ namespace EventPlanner
                         break;
                     }
             }
-
-            ReportData data;
-            Console.WriteLine("Where do you want to export your final results?");
-            Console.WriteLine("1.TextFile 2.DocxFile ");
-            string fileOpt = Console.ReadLine();
-
-            List<String> Read = new List<String>();
-            switch (fileOpt)
-            {
-                case "1":
-                    {
-
-                        data = new TextReportData();
-                        Read.Add(ptype);
-                        Read.Add(etype);
-                        Read.Add(Guests.ToString());
-                        Read.Add(ltype);
-                        Read.Add(dtype);
-
-
-                        Read.Add(money.ToString());
-                        data.ExportFormatedData();
-                        data.ExportData(Read);
-                        break;
-
-                    }
-                case "2":
-                    {
-                        data = new DocxReportData();
-                        Read.Add(ptype);
-                        Read.Add(etype);
-                        Read.Add(Guests.ToString());
-                        Read.Add(ltype);
-                        Read.Add(dtype);
-                        Read.Add(money.ToString());
-                        data.ExportData(Read);
-                        break;
-                    }
-                 
-            }
-
-
         }
     }
 }
