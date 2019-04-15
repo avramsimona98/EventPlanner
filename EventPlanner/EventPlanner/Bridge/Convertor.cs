@@ -8,7 +8,7 @@ namespace EventPlanner.Bridge
 {
     class Convertor : IConvertor
     {
-        public IConvertorServices service { get; set; }
+        private IConvertorServices service { get; set; }
 
         public Convertor(IConvertorServices Service)
         {
