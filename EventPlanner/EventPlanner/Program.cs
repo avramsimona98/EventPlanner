@@ -18,7 +18,6 @@ namespace EventPlanner
         static void Main(string[] args)
         {
             
-
             List<Event> offers = CreateOffers();
             Program pro = new Program();
             Console.WriteLine("Please choose your event type in order to display our offers:");
@@ -224,7 +223,7 @@ namespace EventPlanner
             //
             //Console.ReadLine();
             //Price after further talking with the client
-            Console.WriteLine("Final price:" + money*100);                
+            Console.WriteLine("Final price:" + money * 100);                
             Console.WriteLine("In what monetary unit would you like your final price to be in : ");
             Console.WriteLine("1.Dollar 2.Euro 3.Lei");
             string number = Console.ReadLine();
@@ -237,18 +236,18 @@ namespace EventPlanner
                 case "1":
                     {
                         Dollar dollar = new Dollar();
-                        dollar.MoneyConvert(money);
+                        dollar.MoneyConvert(money * 100);
                         break;
                     }
                 case "2":
                     {
                         Dollar dollar = new Dollar();
-                        dollar.MoneyConvert(money);
+                        dollar.MoneyConvert(money * 100);
                         break;
                     }
                 case "3":
                     {
-                        Console.WriteLine(money + " Lei");
+                        Console.WriteLine(money * 100 + " Lei");
                         break;
                     }
                 default:
