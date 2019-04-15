@@ -85,7 +85,6 @@ namespace EventPlanner
         }
         public static void ShowOffers(List<Event> offers, EEventType eventType)
         {
-            Console.WriteLine(offers.Count());
             Console.WriteLine("Our offers for events are the following:");
             foreach(var eveniment in offers)
             {

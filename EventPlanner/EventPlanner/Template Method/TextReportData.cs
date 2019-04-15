@@ -17,6 +17,7 @@ namespace EventPlanner.Template_Method
             //Console.WriteLine(fullpath);
 
             File.WriteAllLines(@"E:\Andra\Facultate\Anul III\Sem2\Design Patterns\Proiect\EventPlanner\EventPlanner\Resources\ResultText.txt", data);
+
         }
     }
 }
